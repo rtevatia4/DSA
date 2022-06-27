@@ -1,4 +1,4 @@
-# adjacency representation of the graph
+# adjacency matrix representation of the graph
 class Graph:
     def __init__(self, vertices):
         self.vertices = vertices
