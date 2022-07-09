@@ -12,7 +12,6 @@ WE can use horizontal distance approach
 
 from collections import defaultdict
 import collections
-import queue
 from Node import Node
 
 
