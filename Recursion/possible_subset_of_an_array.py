@@ -17,4 +17,12 @@ def powerset(arr):
     subset = []
     powerset_helper(arr,0,subset)
 
-powerset(['a','b','c','d'])
+powerset(['a','b','c'])
+
+"""
+Recursion Tree for the problem:
+                             0 []
+                 1 [a]                        1[]
+        2[ab]           2[a]           2[b]         2[]
+    3[abc]   3[ab]   3[ac]  3[a]    3[bc]  3[b]  3[c]  3[]
+""" 
