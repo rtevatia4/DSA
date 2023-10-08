@@ -16,7 +16,7 @@ def dfs_iterative(graph, vertex):
 
 def dfs_recursive(graph, vertex, visited):
     if visited[vertex]:
-        return 
+        return
     visited[vertex] = True
     print(vertex, "-->", end = " ")
     for adj in graph.adjList[vertex]:
