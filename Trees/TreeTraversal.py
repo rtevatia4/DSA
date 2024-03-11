@@ -19,6 +19,53 @@ def postorder(root):
         postorder(root.right)
         print(str(root.val) + "->", end="")
 
+def inorderTraversal(self, root):
+        if not root:
+            return []
+        stack = []
+        curr = root
+        res = []
+        while stack or curr:
+            if curr:
+                stack.append(curr)
+                curr = curr.left
+            else:
+                node = stack.pop()
+                res.append(node.val)
+                curr = node.right
+        return res
+
+def preorderTraversal(self, root):
+        if not root:
+            return []
+        stack = [root]
+        res = []
+        while stack:
+            node = stack.pop()
+            res.append(node.val)
+            if node.right:
+                stack.append(node.right)
+            if node.left:
+                stack.append(node.left)
+        return res
+
+def postorderTraversal(self, root):
+        if not root:
+            return []
+        stack = [root]
+        s2 = []
+        res = []
+        while stack:
+            node = stack.pop()
+            s2.append(node)
+            if node.left:
+                stack.append(node.left)
+            if node.right:
+                stack.append(node.right)
+        while s2:
+            res.append(s2.pop().val) 
+        return res
+
 def bfT(root):
     if not root:
         return

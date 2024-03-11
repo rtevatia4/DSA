@@ -130,4 +130,63 @@ for a0 in range(q):
     for a1 in range(1, n + 1):
         if a1 == par[a1]: ans += min(x * count[a1], x + y * (count[a1] - 1))
     print(ans)
+
+
+    def roadsAndLibraries(n, c_lib, c_road, cities):
+    max_cost = n*c_lib
+    if c_road >= c_lib:
+        return max_cost
+        
+    parent = [i for i in range(n+1)]
+    def find(u):
+        if parent[u] == u:
+            return u
+        parent[u] = find(parent[u])
+        return parent[u]
+    
+    for x,y in cities:
+        u=find(x)
+        v=find(y)
+        if u!=v:
+            parent[v] = u
+            max_cost -= c_lib 
+            max_cost += c_road
+
+    return max_cost 
+
+## DFS
+
+    def roadsAndLibraries(n, c_lib, c_road, cities):
+    if c_road >= c_lib:
+        return n*c_lib
+    
+    g = [[] for i in range(n+1)]
+    for x,y in cities:
+        g[x].append(y)
+        g[y].append(x)
+    
+    components = 0
+    comp_size = []
+    visited = set()
+    
+    def dfs(node):
+        visited.add(node)
+        s = 1
+        for nei in g[node]:
+            if nei not in visited:
+                s += dfs(nei)
+        return s
+                
+    for v in range(1,n+1):
+        if v not in visited:
+            components += 1
+            size = dfs(v)
+            comp_size.append(size)
+            
+    min_cost = 0
+    min_cost += components*c_lib
+    for s in comp_size:
+        min_cost += (s-1)*c_road
+        
+    return min_cost 
 """
